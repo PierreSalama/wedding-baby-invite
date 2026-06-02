@@ -62,6 +62,10 @@ export function Rsvp() {
           </div>
         ) : (
           <form
+            name="rsvp"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
             className="w-full flex flex-col gap-5 mt-2"
             onSubmit={async (e) => {
               e.preventDefault();
