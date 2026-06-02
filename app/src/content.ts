@@ -53,7 +53,7 @@ export const content = {
     prompt: "I will be attending the…",
     options: [
       { id: "ceremony", label: "Wedding Ceremony" },
-      { id: "gender", label: "Gender Reveal" },
+      { id: "gender", label: "Reception & Gender Reveal" },
       { id: "both", label: "Both" },
       { id: "none", label: "Sadly can't attend" },
     ] as const,
