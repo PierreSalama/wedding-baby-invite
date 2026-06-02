@@ -62,10 +62,6 @@ export function Rsvp() {
           </div>
         ) : (
           <form
-            name="rsvp"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
             className="w-full flex flex-col gap-5 mt-2"
             onSubmit={async (e) => {
               e.preventDefault();
@@ -83,31 +79,6 @@ export function Rsvp() {
               setWarningMessage(null);
 
               try {
-                const netlifyBody = new URLSearchParams({
-                  "form-name": "rsvp",
-                  guestName: trimmedName,
-                  attendanceChoice: currentChoice,
-                  attendanceLabel,
-                  submittedAt,
-                  "bot-field": honeypot,
-                });
-
-                const persistResponse = await fetch("/", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                  },
-                  body: netlifyBody.toString(),
-                });
-
-                if (!persistResponse.ok) {
-                  throw new Error(
-                    import.meta.env.DEV
-                      ? "Form storage is not available in plain Vite dev. Test full submissions with Netlify Dev or after deploying to Netlify."
-                      : "We couldn't save your RSVP right now. Please try again in a moment."
-                  );
-                }
-
                 const notifyResponse = await fetch(RSVP_NOTIFY_ENDPOINT, {
                   method: "POST",
                   headers: {
@@ -158,7 +129,6 @@ export function Rsvp() {
               style={{ fontSize: "1.05rem" }}
             />
 
-            <input type="hidden" name="form-name" value="rsvp" />
             <input
               type="text"
               name="bot-field"

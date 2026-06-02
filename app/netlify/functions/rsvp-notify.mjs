@@ -1,3 +1,5 @@
+import { getStore } from "@netlify/blobs";
+
 const ALLOWED_CHOICES = new Map([
   ["ceremony", "Wedding Ceremony"],
   ["gender", "Gender Reveal"],
@@ -83,9 +85,25 @@ async function sendSms({ accountSid, authToken, fromNumber, toNumber, body }) {
   };
 }
 
+async function saveSubmission({ guestName, attendanceChoice, attendanceLabel, submittedAt }) {
+  const store = getStore("rsvp-submissions");
+  const id = crypto.randomUUID();
+
+  await store.setJSON(`submissions/${id}.json`, {
+    id,
+    guestName,
+    attendanceChoice,
+    attendanceLabel,
+    submittedAt,
+    createdAt: new Date().toISOString(),
+  });
+
+  return id;
+}
+
 export default async (request) => {
   if (request.method !== "POST") {
-    return json(405, { ok: false, error: "Use POST for RSVP notifications." });
+    return json(405, { ok: false, error: "Use POST for RSVP submissions." });
   }
 
   let payload;
@@ -140,6 +158,24 @@ export default async (request) => {
   }
 
   const attendanceLabel = ALLOWED_CHOICES.get(attendanceChoice);
+  let submissionId = "";
+
+  try {
+    submissionId = await saveSubmission({
+      guestName,
+      attendanceChoice,
+      attendanceLabel,
+      submittedAt,
+    });
+  } catch (error) {
+    return json(500, {
+      ok: false,
+      error:
+        "We couldn't save your RSVP right now. Please try again in a moment.",
+      detail: error instanceof Error ? error.message : "Unknown storage error.",
+    });
+  }
+
   const smsBody = buildSmsBody({
     guestName,
     attendanceLabel,
@@ -178,12 +214,14 @@ export default async (request) => {
       ok: false,
       error:
         "Your RSVP was saved, but every SMS notification failed. Check the Twilio sender number, trial restrictions, and verified recipient numbers.",
+      submissionId,
       results,
     });
   }
 
   return json(200, {
     ok: true,
+    submissionId,
     warning:
       failures.length > 0
         ? "Your RSVP was saved, but one or more SMS notifications failed."
