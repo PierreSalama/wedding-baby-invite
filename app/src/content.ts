@@ -2,7 +2,7 @@
 export const weddingDate = new Date(2026, 5, 20, 15, 0, 0); // 2026-06-20 3:00 PM
 
 export const content = {
-  names: { bride: "Krystyna", groom: "Roman" },
+  names: { bride: "Kristyna", groom: "Roman" },
 
   frontCover: {
     intro: "Please join us for a",
