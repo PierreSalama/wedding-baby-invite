@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* paper tones */
+  --c-ivory: #faf6ec;
+  --c-cream: #f2eada;
+  --c-cream-deep: #e6d9bd;
+
+  /* gold ladder — headings + accents */
+  --c-eucalyptus: #d4b878;
+  --c-botanical: #b89a5a;
+  --c-forest:    #8a6a2c;
+  --c-olive:     #7d6128;
+  --c-champagne: #c9a85f;
+
+  /* green — used in front-cover overlay and as a subtle accent */
+  --c-leaf-light: #b8c9a6;
+  --c-leaf:       #7a9468;
+  --c-leaf-deep:  #4f6b40;
+
+  --c-ink: #2b2520;
+}
+
+html, body, #root {
+  margin: 0;
+  background: var(--c-ivory);
+  color: var(--c-ink);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Work Sans", "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+* { box-sizing: border-box; }
+
+img { -webkit-user-drag: none; user-select: none; }
+
+.serif { font-family: "Cormorant Garamond", "Times New Roman", serif; }
+.script {
+  font-family: "Sacramento", "Italianno", "Snell Roundhand", cursive;
+  font-weight: 400;
+}
+.tracking-label {
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+/* full-viewport page base — each section is its own "page" */
+.page {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+}
+.page-white { background: #ffffff; }
+.page-ivory { background: var(--c-ivory); }
+
+/* mobile typography boost */
+@media (max-width: 640px) {
+  body { font-size: 17px; line-height: 1.65; }
+}
