@@ -26,18 +26,18 @@ export const content = {
     wedding: {
       label: "Wedding Ceremony",
       date: "Saturday, June 20th, 2026",
-      time: "3:00 PM",
+      time: "1:30 PM",
       venue: "St. Clement's Parish",
       address: "745 Duke Street, Cambridge, Ontario N3H 3T7",
       mapUrl:
         "https://maps.google.com/?q=St+Clement's+Parish+745+Duke+St+Cambridge+Ontario",
     },
     babyShower: {
-      label: "Gender Reveal",
+      label: "Reception & Gender Reveal",
       date: "Saturday, June 20th, 2026",
-      time: "5:00 PM",
-      venue: "Venue TBD",
-      address: "Address coming soon",
+      time: "4:00 PM",
+      venue: "1306 Mary Avenue,",
+      address: "Cambridge, ON, N3H 4N9",
       mapUrl: "https://maps.google.com",
     },
   },
