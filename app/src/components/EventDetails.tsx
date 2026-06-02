@@ -122,11 +122,6 @@ export function EventDetails() {
 
         {/* unified countdown card */}
         <div className="w-full max-w-sm rounded-3xl bg-white border border-eucalyptus/30 shadow-[0_18px_40px_-22px_rgba(138,106,44,0.35)] px-6 py-7">
-          <div className="grid grid-cols-[1fr_auto_1fr] items-end gap-3 mb-2">
-            <p className="tracking-label text-botanical text-center">Wedding</p>
-            <span aria-hidden />
-            <p className="tracking-label text-botanical text-center">Gender Reveal</p>
-          </div>
           <div className="flex items-center justify-center gap-4 mb-4">
             <RingsIcon className="w-12" />
             <span className="script text-botanical" style={{ fontSize: "1.5rem", lineHeight: 1 }}>&amp;</span>

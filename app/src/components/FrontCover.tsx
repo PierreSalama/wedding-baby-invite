@@ -53,6 +53,15 @@ export function FrontCover() {
           {content.frontCover.honoring[1]}
         </p>
 
+        <div className="grid grid-cols-[1fr_1fr] items-end gap-7 sm:gap-10 mt-1 w-full max-w-[16rem] sm:max-w-[19rem]">
+          <p className="tracking-label text-botanical text-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.45)]">
+            Wedding
+          </p>
+          <p className="tracking-label text-botanical text-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.45)]">
+            Gender Reveal
+          </p>
+        </div>
+
         {/* rings + footsteps */}
         <div className="flex items-center gap-7 sm:gap-10 mt-2">
           <RingsIcon className="w-16 sm:w-20" />
