@@ -6,7 +6,7 @@ export const content = {
 
   frontCover: {
     intro: "Please join us for a",
-    title: "Double Shower",
+    title: "Double Celebration",
     honoring: ["Honoring our love", "& our growing family"],
     closing: "We can't wait to celebrate with you",
   },
@@ -29,8 +29,6 @@ export const content = {
       time: "1:30 PM",
       venue: "St. Clement's Parish",
       address: "745 Duke Street, Cambridge, Ontario N3H 3T7",
-      mapUrl:
-        "https://maps.google.com/?q=St+Clement's+Parish+745+Duke+St+Cambridge+Ontario",
     },
     babyShower: {
       label: "Reception & Gender Reveal",
@@ -38,7 +36,6 @@ export const content = {
       time: "4:00 PM",
       venue: "1306 Mary Avenue,",
       address: "Cambridge, ON, N3H 4N9",
-      mapUrl: "https://maps.google.com",
     },
   },
 
@@ -48,7 +45,7 @@ export const content = {
 
   rsvp: {
     title: "RSVP",
-    deadline: "Kindly RSVP by May 20th, 2026",
+    deadline: "Kindly RSVP at your earliest convenience",
     namePlaceholder: "Your name",
     prompt: "I will be attending the…",
     options: [

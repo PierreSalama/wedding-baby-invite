@@ -32,6 +32,12 @@ function PinIcon({ className }: { className?: string }) {
   );
 }
 
+function buildGoogleMapsUrl(venue: string, address: string) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    `${venue} ${address}`,
+  )}`;
+}
+
 type EventBlockProps = {
   label: string;
   icon: React.ReactNode;
@@ -39,10 +45,11 @@ type EventBlockProps = {
   time: string;
   venue: string;
   address: string;
-  mapUrl: string;
 };
 
-function EventBlock({ label, icon, date, time, venue, address, mapUrl }: EventBlockProps) {
+function EventBlock({ label, icon, date, time, venue, address }: EventBlockProps) {
+  const directionsUrl = buildGoogleMapsUrl(venue, address);
+
   return (
     <div className="w-full bg-white border border-eucalyptus/30 rounded-3xl shadow-[0_18px_40px_-22px_rgba(138,106,44,0.4)] px-6 py-7 sm:px-8 sm:py-8">
       <div className="flex items-center gap-3 justify-center mb-5">
@@ -85,7 +92,7 @@ function EventBlock({ label, icon, date, time, venue, address, mapUrl }: EventBl
       </div>
 
       <a
-        href={mapUrl}
+        href={directionsUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="block w-full text-center px-6 py-3 rounded-full bg-forest text-ivory tracking-[0.18em] uppercase text-xs hover:bg-botanical transition-colors active:scale-95"
@@ -115,6 +122,11 @@ export function EventDetails() {
 
         {/* unified countdown card */}
         <div className="w-full max-w-sm rounded-3xl bg-white border border-eucalyptus/30 shadow-[0_18px_40px_-22px_rgba(138,106,44,0.35)] px-6 py-7">
+          <div className="grid grid-cols-[1fr_auto_1fr] items-end gap-3 mb-2">
+            <p className="tracking-label text-botanical text-center">Wedding</p>
+            <span aria-hidden />
+            <p className="tracking-label text-botanical text-center">Gender Reveal</p>
+          </div>
           <div className="flex items-center justify-center gap-4 mb-4">
             <RingsIcon className="w-12" />
             <span className="script text-botanical" style={{ fontSize: "1.5rem", lineHeight: 1 }}>&amp;</span>
@@ -136,7 +148,6 @@ export function EventDetails() {
           time={content.events.wedding.time}
           venue={content.events.wedding.venue}
           address={content.events.wedding.address}
-          mapUrl={content.events.wedding.mapUrl}
         />
 
         <span
@@ -153,7 +164,6 @@ export function EventDetails() {
           time={content.events.babyShower.time}
           venue={content.events.babyShower.venue}
           address={content.events.babyShower.address}
-          mapUrl={content.events.babyShower.mapUrl}
         />
       </div>
     </section>

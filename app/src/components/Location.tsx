@@ -18,16 +18,23 @@ const genderRevealPhotos = import.meta.glob("../assets/gender-reveal.*", {
 const churchPhoto = Object.values(churchPhotos)[0] || null;
 const genderRevealPhoto = Object.values(genderRevealPhotos)[0] || null;
 
+function buildGoogleMapsUrl(venue: string, address: string) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    `${venue} ${address}`,
+  )}`;
+}
+
 type VenueCardProps = {
   label: string;
   venue: string;
   address: string;
-  mapUrl: string;
   fallbackIcon: React.ReactNode;
   photoSrc: string | null;
 };
 
-function VenueCard({ label, venue, address, mapUrl, fallbackIcon, photoSrc }: VenueCardProps) {
+function VenueCard({ label, venue, address, fallbackIcon, photoSrc }: VenueCardProps) {
+  const directionsUrl = buildGoogleMapsUrl(venue, address);
+
   return (
     <div className="w-full bg-white border border-eucalyptus/30 rounded-3xl shadow-[0_18px_40px_-22px_rgba(138,106,44,0.35)] overflow-hidden">
       {/* horizontal layout on >= sm: photo LEFT, info RIGHT */}
@@ -70,7 +77,7 @@ function VenueCard({ label, venue, address, mapUrl, fallbackIcon, photoSrc }: Ve
             {address}
           </p>
           <a
-            href={mapUrl}
+            href={directionsUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block self-center sm:self-start px-6 py-3 rounded-full bg-forest text-ivory tracking-[0.18em] uppercase text-xs hover:bg-botanical transition-colors active:scale-95"
@@ -114,7 +121,6 @@ export function Location() {
           label="Wedding Ceremony"
           venue={content.events.wedding.venue}
           address={content.events.wedding.address}
-          mapUrl={content.events.wedding.mapUrl}
           photoSrc={churchPhoto}
           fallbackIcon={<ChurchIcon className="w-24 h-24 sm:w-28 sm:h-28 opacity-90" />}
         />
@@ -123,7 +129,6 @@ export function Location() {
           label="Reception & Gender Reveal"
           venue={content.events.babyShower.venue}
           address={content.events.babyShower.address}
-          mapUrl={content.events.babyShower.mapUrl}
           photoSrc={genderRevealPhoto}
           fallbackIcon={<GenderRevealIcon className="w-24 h-24 sm:w-28 sm:h-28 opacity-90" />}
         />
