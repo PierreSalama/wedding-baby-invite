@@ -147,7 +147,7 @@ export function EventDetails() {
         </span>
 
         <EventBlock
-          label="Gender Reveal"
+          label="Reception & Gender Reveal"
           icon={<FootstepsIcon className="w-12" />}
           date={content.events.babyShower.date}
           time={content.events.babyShower.time}

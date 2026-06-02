@@ -120,7 +120,7 @@ export function Location() {
         />
 
         <VenueCard
-          label="Gender Reveal"
+          label="Reception & Gender Reveal"
           venue={content.events.babyShower.venue}
           address={content.events.babyShower.address}
           mapUrl={content.events.babyShower.mapUrl}
