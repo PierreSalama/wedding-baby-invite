@@ -65,6 +65,20 @@ img { -webkit-user-drag: none; user-select: none; }
 .page-white { background: #ffffff; }
 .page-ivory { background: var(--c-ivory); }
 
+.hero-cover-bg {
+  background-position: var(--hero-bg-mobile-position, 58% 50%);
+}
+
+.hero-cover-bg[data-hero-preview="desktop"] {
+  background-position: var(--hero-bg-desktop-position, 50% 50%);
+}
+
+@media (min-width: 640px) {
+  .hero-cover-bg[data-hero-preview="live"] {
+    background-position: var(--hero-bg-desktop-position, 50% 50%);
+  }
+}
+
 /* mobile typography boost */
 @media (max-width: 640px) {
   body { font-size: 17px; line-height: 1.65; }
