@@ -52,11 +52,15 @@ function EventBlock({ label, icon, date, time, venue, address }: EventBlockProps
 
   return (
     <div className="w-full bg-white border border-eucalyptus/30 rounded-3xl shadow-[0_18px_40px_-22px_rgba(138,106,44,0.4)] px-6 py-7 sm:px-8 sm:py-8">
-      <div className="flex items-center gap-3 justify-center mb-5">
+      <div className="flex flex-col items-center gap-3 mb-6">
         {icon}
         <span
-          className="script text-forest"
-          style={{ fontSize: "clamp(1.6rem, 5vw, 2rem)", lineHeight: 1 }}
+          className="script text-forest text-center"
+          style={{
+            fontSize: "clamp(1.7rem, 5.5vw, 2.2rem)",
+            lineHeight: 1.05,
+            whiteSpace: "nowrap",
+          }}
         >
           {label}
         </span>
