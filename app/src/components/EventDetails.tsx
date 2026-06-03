@@ -145,16 +145,26 @@ export function EventDetails() {
           address={content.events.wedding.address}
         />
 
-        <span
-          className="script text-botanical -my-2"
-          style={{ fontSize: "2rem", lineHeight: 1 }}
-        >
-          &amp;
-        </span>
+        {/* transition line between the two events */}
+        <div className="w-full max-w-sm flex flex-col items-center gap-3 -my-2">
+          <HeartDivider width={40} />
+          <p
+            className="serif italic text-forest leading-snug px-4"
+            style={{ fontSize: "clamp(1rem, 2.6vw, 1.1rem)" }}
+          >
+            Please join us afterward for a reception and baby gender reveal at our home
+          </p>
+          <HeartDivider width={40} />
+        </div>
 
         <EventBlock
           label="Reception & Gender Reveal"
-          icon={<FootstepsIcon className="w-12" />}
+          icon={
+            <span className="flex items-center gap-2">
+              <RingsIcon className="w-11" />
+              <FootstepsIcon className="w-10" />
+            </span>
+          }
           date={content.events.babyShower.date}
           time={content.events.babyShower.time}
           venue={content.events.babyShower.venue}
