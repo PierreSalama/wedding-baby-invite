@@ -34,8 +34,8 @@ export const content = {
       label: "Reception & Gender Reveal",
       date: "Saturday, June 20th, 2026",
       time: "4:00 PM",
-      venue: "1306 Mary Avenue,",
-      address: "Cambridge, ON, N3H 4N9",
+      venue: "At our home,",
+      address: "1306 Mary Avenue,Cambridge, ON, N3H 4N9",
     },
   },
 
